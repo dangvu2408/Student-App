@@ -1,4 +1,4 @@
-# hustsa
+# HUST Student Assistant
 
 A new Flutter project.
 
