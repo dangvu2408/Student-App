@@ -14,46 +14,49 @@ class homeTab extends StatelessWidget {
                             fit: BoxFit.cover,
                         ),
                     ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                            Flexible(
-                                child: Container(
-                                    margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 0),
-                                    width: double.infinity,
-                                    height: 90,
-                                    child: const Image(
-                                        image: AssetImage('assets/images/logofull.png'),
+                    Container(
+                        margin: const EdgeInsets.only(top: 25, right: 25),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                                Flexible(
+                                    child: Container(
+                                        width: double.infinity,
+                                        height: 90,
+                                        child: const Image(
+                                            image: AssetImage('assets/images/logofull.png'),
+                                        ),
                                     ),
                                 ),
-                            ),
-                            Flexible(
-                                child: Container(
-                                    margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-                                    width: 25,
-                                    child: const Image(
-                                        image: AssetImage('assets/images/settingicon.png'),
+                                Flexible(
+                                    child: Container(
+                                        width: 25,
+                                        child: const Image(
+                                            image: AssetImage('assets/images/settingicon.png'),
+                                        ),
+                                    ),
+                                )
+                            ],
+                        ),
+                    ),
+                    SingleChildScrollView(
+                        child: Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                                height: MediaQuery.of(context).size.height,
+                                margin: const EdgeInsets.only(top: 180),
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(25.0),
+                                        topRight: Radius.circular(25.0),
                                     ),
                                 ),
                             )
-                        ],
+                        ),
                     ),
-                    Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        child: Container(
-                            height: 800,
-                            margin: const EdgeInsets.symmetric(vertical: 180, horizontal: 0),
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                ),
-                            ),
-                        )
-                    )
                 ],
             ),
         );
