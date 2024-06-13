@@ -14,12 +14,29 @@ class homeTab extends StatelessWidget {
                             fit: BoxFit.cover,
                         ),
                     ),
-                    Container(
-                        margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 0),
-                        width: 160,
-                        child: const Image(
-                            image: AssetImage('assets/images/logofull.png'),
-                        )
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                            Flexible(
+                                child: Container(
+                                    margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 0),
+                                    width: double.infinity,
+                                    height: 90,
+                                    child: const Image(
+                                        image: AssetImage('assets/images/logofull.png'),
+                                    ),
+                                ),
+                            ),
+                            Flexible(
+                                child: Container(
+                                    margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                                    width: 25,
+                                    child: const Image(
+                                        image: AssetImage('assets/images/settingicon.png'),
+                                    ),
+                                ),
+                            )
+                        ],
                     ),
                     Positioned(
                         top: 0,

@@ -61,7 +61,7 @@ class homeState extends State<myWidget> {
                             margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                             decoration: const BoxDecoration(
                                 boxShadow: [
-                                    BoxShadow(color: Color(0xFF606060), spreadRadius: 0, blurRadius: 8),
+                                    BoxShadow(color: Color.fromARGB(255, 128, 127, 127), spreadRadius: 0, blurRadius: 8),
                                 ],
                             ),
                             child: ClipRRect(
