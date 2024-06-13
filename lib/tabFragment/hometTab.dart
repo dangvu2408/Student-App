@@ -26,7 +26,7 @@ class homeTab extends StatelessWidget {
                         left: 0,
                         right: 0,
                         child: Container(
-                            height: 800`,
+                            height: 800,
                             margin: const EdgeInsets.symmetric(vertical: 180, horizontal: 0),
                             decoration: const BoxDecoration(
                                 color: Colors.white,
