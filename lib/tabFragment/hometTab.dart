@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class homeTab extends StatefulWidget {
@@ -83,43 +84,75 @@ class homeStateWidget extends State<homeTab> {
                             child: Column(
                                 children: [
                                     Container(
-                                        height: 80,
+                                        height: 75,
                                         width: double.infinity,
                                         padding: const EdgeInsets.only(bottom: 15),
                                         child: ListView(
                                             scrollDirection: Axis.horizontal,
                                             children: [
                                                 Container(
-                                                    padding: const EdgeInsets.only(left: 25),
-                                                    child: const CircleAvatar(
-                                                        radius: 45,
-                                                        backgroundColor: Color(0xFFD80015),
-                                                        child: Padding(
-                                                            padding: EdgeInsets.all(2), // Border radius
-                                                            child: ClipOval(
-                                                                child:
-                                                                Image(
-                                                                    image: AssetImage('assets/images/defaultavt.jpg'),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                                Container(
+                                                    margin: const EdgeInsets.only(right: 30, left: 25),
                                                     child: ClipRRect(
                                                         borderRadius: BorderRadius.circular(15),
                                                         child: BackdropFilter(
-                                                            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                                                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                                                             child: Container(
-                                                                width: 100,
+                                                                padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
                                                                 decoration: BoxDecoration(
                                                                     borderRadius: BorderRadius.circular(15.0),
                                                                     border: Border.all(
                                                                         width: 1.0,
-                                                                        color: Color(0xFFD80015).withOpacity(0.3),
+                                                                        color: Color.fromARGB(255, 255, 44, 65).withOpacity(.6),
                                                                     ),
-                                                                    color: Color(0xFFD80015).withOpacity(0.1),
                                                                 ),
+                                                                child: Row(
+                                                                    children: [
+                                                                        Container(
+                                                                            child: const CircleAvatar(
+                                                                                radius: 45,
+                                                                                backgroundColor: Color(0xFFD80015),
+                                                                                child: Padding(
+                                                                                    padding: EdgeInsets.all(2), // Border radius
+                                                                                    child: ClipOval(
+                                                                                        child:
+                                                                                        Image(
+                                                                                            image: AssetImage('assets/images/defaultavt.jpg'),
+                                                                                        ),
+                                                                                    ),
+                                                                                ),
+                                                                            ),
+                                                                        ),
+                                                                        Container(
+                                                                            padding: const EdgeInsets.only(right: 10),
+                                                                            child: const Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                    Text(
+                                                                                        'Nguyễn Văn A',
+                                                                                        style: TextStyle(
+                                                                                            fontSize: 16,
+                                                                                            fontFamily: 'SFPro',
+                                                                                            color: Colors.white,
+                                                                                        ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                        '20220001',
+                                                                                        style: TextStyle(
+                                                                                            fontSize: 15,
+                                                                                            fontFamily: 'SFPro',
+                                                                                            color: Colors.white,
+                                                                                        ),
+                                                                                    ),
+                                                                                ],
+                                                                            )
+                                                                        ),
+                                                                        const Image(
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                            image: AssetImage('assets/images/forwardicon.png'),
+                                                                        ),
+                                                                    ],
+                                                                )
                                                             ),
                                                         ),
                                                     ),
