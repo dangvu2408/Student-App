@@ -58,7 +58,7 @@ class homeState extends State<myWidget> {
                         left: 0,
                         right: 0,
                         child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            margin: const EdgeInsets.only(bottom: 15, right: 15, left: 15),
                             decoration: const BoxDecoration(
                                 boxShadow: [
                                     BoxShadow(color: Color.fromARGB(255, 128, 127, 127), spreadRadius: 0, blurRadius: 8),
