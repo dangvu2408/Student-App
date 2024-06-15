@@ -79,14 +79,14 @@ class homeState extends State<myWidget> {
                                     iconSize: 20,
                                     selectedLabelStyle: const TextStyle(
                                         fontFamily: 'SFPro',
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17,
                                         color: Colors.white,
                                     ),
                                     unselectedLabelStyle: const TextStyle(
                                         fontFamily: 'SFPro',
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15,
+                                        fontSize: 17,
                                         color: Color(0xFFFF7E89),
                                     ),
                                     items: const [
