@@ -103,7 +103,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_launcher_icons:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_launcher_icons
       sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
@@ -172,7 +172,7 @@ packages:
     source: hosted
     version: "3.0.0"
   loading_indicator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: loading_indicator
       sha256: a101ffb2aa3e646137d7810bfa90b50525dd3f72c01235b6df7491cf6af6f284
