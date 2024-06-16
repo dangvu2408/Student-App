@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hust_sa/tabFragment/hometTab.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 void main() {
     runApp(myApp());
 }
@@ -13,11 +17,53 @@ class myApp extends StatelessWidget {
                 primaryColor: Color(0xFFD80015),
                 fontFamily: 'SFPro',
             ),
-            home: myWidget(title: 'HUST',),
+            home: splashScreen(),
             debugShowCheckedModeBanner: false,
         );
-  }
-    
+    }
+}
+
+class splashScreen extends StatefulWidget {
+    @override
+    splashScreenState createState() => splashScreenState();
+}
+
+class splashScreenState extends State<splashScreen> {
+    @override
+    void initState() {
+        super.initState();
+        Timer(const Duration(milliseconds: 2000), () {
+            Navigator.push(context, PageTransition(
+                type: PageTransitionType.fade,
+                child: myWidget(title: 'HUST'),
+                duration: const Duration(milliseconds: 1000),
+            ));
+        });
+    }
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            body: Stack(
+                children: [
+                    Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        child: const Image(
+                            image: AssetImage('assets/images/homebackground.png'),
+                            fit: BoxFit.cover,
+                        ),
+                    ),
+                    const Center(
+                        child: LoadingIndicator(
+                            indicatorType: Indicator.ballPulse,
+                            colors: [Colors.white],
+                            strokeWidth: 2,
+                        ),
+                    )
+                ],
+            )
+        );
+    }
 }
 
 class myWidget extends StatefulWidget {

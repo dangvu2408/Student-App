@@ -137,7 +137,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                     Container(
                                                                                         padding: const EdgeInsets.only(right: 10),
                                                                                         child: const Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                             children: [
                                                                                                 Text(
                                                                                                     'Nguyễn Văn A',
@@ -191,7 +191,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                     Container(
                                                                                         padding: const EdgeInsets.only(left: 20, right: 10),
                                                                                         child: const Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                             children: [
                                                                                                 Text(
                                                                                                     'Thông tin học tập',
@@ -267,7 +267,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                     Container(
                                                                                         padding: const EdgeInsets.only(left: 20, right: 10),
                                                                                         child: const Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                             children: [
                                                                                                 Text(
                                                                                                     'Thông tin điểm rèn luyện',
