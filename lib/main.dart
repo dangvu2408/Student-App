@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hust_sa/navigator/loginProperties.dart';
 import 'package:hust_sa/tabFragment/hometTab.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -35,8 +36,8 @@ class splashScreenState extends State<splashScreen> {
         Timer(const Duration(milliseconds: 2000), () {
             Navigator.push(context, PageTransition(
                 type: PageTransitionType.fade,
-                child: myWidget(title: 'HUST'),
-                duration: const Duration(milliseconds: 1000),
+                child: loginActivity(),
+                duration: const Duration(milliseconds: 2000),
             ));
         });
     }
@@ -53,11 +54,18 @@ class splashScreenState extends State<splashScreen> {
                             fit: BoxFit.cover,
                         ),
                     ),
-                    const Center(
-                        child: LoadingIndicator(
-                            indicatorType: Indicator.ballPulse,
-                            colors: [Colors.white],
-                            strokeWidth: 2,
+                    Center(
+                        child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 80),
+                            child: const Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                    LinearProgressIndicator(
+                                        backgroundColor: Colors.white,
+                                        color: Color(0xFFD80015),
+                                    )
+                                ],
+                            ),
                         ),
                     )
                 ],

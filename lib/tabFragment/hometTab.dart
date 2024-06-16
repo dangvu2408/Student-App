@@ -15,9 +15,7 @@ class homeStateWidget extends State<homeTab> {
     ScrollController controller = ScrollController();
     bool showOverlay = false;
     final calendarController = AdvancedCalendarController.today();
-    final calendarCustom = AdvancedCalendarController(DateTime(2024, 12, 31));
     final events = <DateTime>[
-        DateTime(2024, 05, 01),
         DateTime.now(),
     ];
 
@@ -115,7 +113,7 @@ class homeStateWidget extends State<homeTab> {
                                                                     child: BackdropFilter(
                                                                         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                                                                         child: Container(
-                                                                            padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
+                                                                            padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
                                                                             decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(15.0),
                                                                                 border: Border.all(
@@ -148,7 +146,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                 Text(
                                                                                                     'Nguyễn Văn A',
                                                                                                     style: TextStyle(
-                                                                                                        fontSize: 18,
+                                                                                                        fontSize: 16,
                                                                                                         fontFamily: 'SFPro',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
@@ -157,7 +155,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                 Text(
                                                                                                     '20220001',
                                                                                                     style: TextStyle(
-                                                                                                        fontSize: 16,
+                                                                                                        fontSize: 15,
                                                                                                         fontFamily: 'SFPro',
                                                                                                         color: Colors.white,
                                                                                                     ),
@@ -184,7 +182,7 @@ class homeStateWidget extends State<homeTab> {
                                                                     child: BackdropFilter(
                                                                         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                                                                         child: Container(
-                                                                            padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
+                                                                            padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
                                                                             decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(15.0),
                                                                                 border: Border.all(
@@ -202,7 +200,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                 Text(
                                                                                                     'Thông tin học tập',
                                                                                                     style: TextStyle(
-                                                                                                        fontSize: 18,
+                                                                                                        fontSize: 16,
                                                                                                         fontFamily: 'SFPro',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
@@ -215,7 +213,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                                 Text(
                                                                                                                     'GPA: 3.0',
                                                                                                                     style: TextStyle(
-                                                                                                                        fontSize: 16,
+                                                                                                                        fontSize: 15,
                                                                                                                         fontFamily: 'SFPro',
                                                                                                                         color: Colors.white,
                                                                                                                     ),
@@ -223,7 +221,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                                 Text(
                                                                                                                     'CPA: 3.0',
                                                                                                                     style: TextStyle(
-                                                                                                                        fontSize: 16,
+                                                                                                                        fontSize: 15,
                                                                                                                         fontFamily: 'SFPro',
                                                                                                                         color: Colors.white,
                                                                                                                     ),
@@ -260,7 +258,7 @@ class homeStateWidget extends State<homeTab> {
                                                                     child: BackdropFilter(
                                                                         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                                                                         child: Container(
-                                                                            padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
+                                                                            padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
                                                                             decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(15.0),
                                                                                 border: Border.all(
@@ -278,7 +276,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                 Text(
                                                                                                     'Thông tin điểm rèn luyện',
                                                                                                     style: TextStyle(
-                                                                                                        fontSize: 18,
+                                                                                                        fontSize: 16,
                                                                                                         fontFamily: 'SFPro',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
@@ -289,7 +287,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                         Text(
                                                                                                             'Điểm rèn luyện: 70',
                                                                                                             style: TextStyle(
-                                                                                                                fontSize: 16,
+                                                                                                                fontSize: 15,
                                                                                                                 fontFamily: 'SFPro',
                                                                                                                 color: Colors.white,
                                                                                                             ),
@@ -322,7 +320,7 @@ class homeStateWidget extends State<homeTab> {
                                             ),
                                         ),
                                         Container(
-                                            padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                                            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
                                             decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
@@ -330,18 +328,50 @@ class homeStateWidget extends State<homeTab> {
                                                     topRight: Radius.circular(25.0),
                                                 ),
                                             ),
-                                            child: AdvancedCalendar(
-                                                controller: calendarController,
-                                                events: events,
-                                                weekLineHeight: 48.0,
-                                                startWeekDay: 1,
-                                                innerDot: true,
-                                                keepLineSize: true,
-                                                calendarTextStyle: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'SFPro',
+                                            child: Container(
+                                                padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xFFF8F9FD),
+                                                    borderRadius: BorderRadius.only(
+                                                        topLeft: Radius.circular(20.0),
+                                                        topRight: Radius.circular(20.0),
+                                                        bottomLeft: Radius.circular(20.0),
+                                                        bottomRight: Radius.circular(20.0),
+                                                    ),
+                                                    boxShadow: [
+                                                        BoxShadow(
+                                                            color: Colors.grey,
+                                                            offset: Offset(0.0, 0.5), //(x,y)
+                                                            blurRadius: 5.0,
+                                                        ),
+                                                    ],
                                                 ),
-                                            ),
+                                                child: AdvancedCalendar(
+                                                    controller: calendarController,
+                                                    events: events,
+                                                    weekLineHeight: 48.0,
+                                                    startWeekDay: 1,
+                                                    innerDot: true,
+                                                    keepLineSize: true,
+                                                    calendarTextStyle: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: 'SFPro',
+                                                        color: Colors.black,
+                                                    ),
+                                                    headerStyle: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: 'SFPro',
+                                                        color: Colors.black,
+                                                        fontWeight: FontWeight.bold,
+                                                    ),
+                                                    todayStyle: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: 'SFPro',
+                                                        color: Colors.black,
+                                                        fontWeight: FontWeight.bold,
+                                                    ),
+                                                ),
+                                            )
                                         ),
                                     ],
                                 )
