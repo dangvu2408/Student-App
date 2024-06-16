@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-
+import 'package:flutter_advanced_calendar/flutter_advanced_calendar.dart';
 class homeTab extends StatefulWidget {
     homeTab({Key? key}) : super(key: key);
 
@@ -14,6 +14,12 @@ class homeTab extends StatefulWidget {
 class homeStateWidget extends State<homeTab> {
     ScrollController controller = ScrollController();
     bool showOverlay = false;
+    final calendarController = AdvancedCalendarController.today();
+    final calendarCustom = AdvancedCalendarController(DateTime(2024, 12, 31));
+    final events = <DateTime>[
+        DateTime(2024, 05, 01),
+        DateTime.now(),
+    ];
 
     @override
     void initState() {
@@ -316,12 +322,24 @@ class homeStateWidget extends State<homeTab> {
                                             ),
                                         ),
                                         Container(
-                                            height: MediaQuery.of(context).size.height,
+                                            padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
                                             decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(25.0),
                                                     topRight: Radius.circular(25.0),
+                                                ),
+                                            ),
+                                            child: AdvancedCalendar(
+                                                controller: calendarController,
+                                                events: events,
+                                                weekLineHeight: 48.0,
+                                                startWeekDay: 1,
+                                                innerDot: true,
+                                                keepLineSize: true,
+                                                calendarTextStyle: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: 'SFPro',
                                                 ),
                                             ),
                                         ),
