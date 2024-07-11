@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_advanced_calendar/flutter_advanced_calendar.dart';
+import 'package:table_calendar/table_calendar.dart';
 class homeTab extends StatefulWidget {
     homeTab({Key? key}) : super(key: key);
 
@@ -14,10 +14,6 @@ class homeTab extends StatefulWidget {
 class homeStateWidget extends State<homeTab> {
     ScrollController controller = ScrollController();
     bool showOverlay = false;
-    final calendarController = AdvancedCalendarController.today();
-    final events = <DateTime>[
-        DateTime.now(),
-    ];
 
     @override
     void initState() {
@@ -43,6 +39,12 @@ class homeStateWidget extends State<homeTab> {
     void dispose() {
         controller.dispose();
         super.dispose();
+    }
+    DateTime today = DateTime.now();
+    void onDaySelect(DateTime day, DateTime focus) {
+        setState(() {
+            today = day;
+        });
     }
     @override
     Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class homeStateWidget extends State<homeTab> {
                                         width: 25,
                                         height: 25,
                                         child: const Image(
-                                            image: AssetImage('assets/images/settingicon.png'),
+                                            image: AssetImage('assets/images/menu.png'),
                                         ),
                                     ),
                                 )
@@ -95,7 +97,7 @@ class homeStateWidget extends State<homeTab> {
                                 child: Column(
                                     children: [
                                         Container(
-                                            height: 90,
+                                            height: 102,
                                             width: double.infinity,
                                             padding: const EdgeInsets.only(bottom: 15),
                                             child: ListView(
@@ -147,7 +149,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                     'Nguyễn Văn A',
                                                                                                     style: TextStyle(
                                                                                                         fontSize: 16,
-                                                                                                        fontFamily: 'SFPro',
+                                                                                                        fontFamily: 'SFProSemiBold',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
                                                                                                     ),
@@ -201,7 +203,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                     'Thông tin học tập',
                                                                                                     style: TextStyle(
                                                                                                         fontSize: 16,
-                                                                                                        fontFamily: 'SFPro',
+                                                                                                        fontFamily: 'SFProSemiBold',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
                                                                                                     ),
@@ -277,7 +279,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                     'Thông tin điểm rèn luyện',
                                                                                                     style: TextStyle(
                                                                                                         fontSize: 16,
-                                                                                                        fontFamily: 'SFPro',
+                                                                                                        fontFamily: 'SFProSemiBold',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.bold,
                                                                                                     ),
@@ -329,7 +331,7 @@ class homeStateWidget extends State<homeTab> {
                                                 ),
                                             ),
                                             child: Container(
-                                                padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                                                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                                                 decoration: const BoxDecoration(
                                                     color: Color(0xFFF8F9FD),
                                                     borderRadius: BorderRadius.only(
@@ -346,36 +348,28 @@ class homeStateWidget extends State<homeTab> {
                                                         ),
                                                     ],
                                                 ),
-                                                child: AdvancedCalendar(
-                                                    controller: calendarController,
-                                                    events: events,
-                                                    weekLineHeight: 48.0,
-                                                    startWeekDay: 1,
-                                                    innerDot: true,
-                                                    keepLineSize: true,
-                                                    calendarTextStyle: const TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'SFPro',
-                                                        color: Colors.black,
+                                                child: TableCalendar(
+                                                    focusedDay: today,
+                                                    rowHeight: 40,
+                                                    calendarFormat: CalendarFormat.week,
+                                                    firstDay: DateTime.utc(2010, 10, 15),
+                                                    lastDay: DateTime.utc(2050, 10, 15),
+                                                    headerStyle: const HeaderStyle(
+                                                        formatButtonVisible: false,
+                                                        titleCentered: true,
+                                                        titleTextStyle: TextStyle(
+                                                            fontSize: 18,
+                                                            fontFamily: 'SFProSemiBold',
+                                                        ),
                                                     ),
-                                                    headerStyle: const TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'SFPro',
-                                                        color: Colors.black,
-                                                        fontWeight: FontWeight.bold,
-                                                    ),
-                                                    todayStyle: const TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily: 'SFPro',
-                                                        color: Colors.black,
-                                                        fontWeight: FontWeight.bold,
-                                                    ),
-                                                ),
+                                                    availableGestures: AvailableGestures.all,
+                                                    onDaySelected: onDaySelect,
+                                                    selectedDayPredicate: (day) => isSameDay(day, today),
+                                                )
                                             )
                                         ),
                                     ],
                                 )
-
                             )
                         ),
                     ),
@@ -402,7 +396,7 @@ class homeStateWidget extends State<homeTab> {
                                             width: 25,
                                             height: 25,
                                             child: const Image(
-                                                image: AssetImage('assets/images/settingicon.png'),
+                                                image: AssetImage('assets/images/menu.png'),
                                             ),
                                         ),
                                     ],

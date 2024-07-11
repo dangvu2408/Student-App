@@ -145,19 +145,19 @@ class homeState extends State<myWidget> {
                                     ),
                                     items: const [
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/homeicon1.png')),
+                                            icon: ImageIcon(AssetImage('assets/images/home.png')),
                                             label: 'Trang chủ',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/bottomiconlist.png')),
+                                            icon: ImageIcon(AssetImage('assets/images/list.png')),
                                             label: 'Học phần',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/news.png')),
+                                            icon: ImageIcon(AssetImage('assets/images/mail.png')),
                                             label: 'Tin tức',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/studentuser.png')),
+                                            icon: ImageIcon(AssetImage('assets/images/user.png')),
                                             label: 'Cá nhân',
                                         ),
                                     ],

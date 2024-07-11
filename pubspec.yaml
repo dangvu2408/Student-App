@@ -33,7 +33,7 @@ dependencies:
   page_transition: "^2.1.0"
   flutter_launcher_icons: "^0.13.1"
   loading_indicator: "^3.1.1"
-  flutter_advanced_calendar: "^1.4.1"
+  table_calendar: "^3.1.0"
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
@@ -68,10 +68,12 @@ flutter:
         - asset: fonts/sfpro_regular.otf
         - asset: fonts/sfpro_regular_italic.otf
           style: italic
-        - asset: fonts/sfpro_semibold.otf
-          weight: 500
+    - family: SFProBold
+      fonts:
         - asset: fonts/sfpro_bold.otf
-          weight: 700
+    - family: SFProSemiBold
+      fonts:
+        - asset: fonts/sfpro_semibold.otf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
