@@ -14,32 +14,34 @@ class homeTab extends StatefulWidget {
 class homeStateWidget extends State<homeTab> {
     ScrollController controller = ScrollController();
     bool showOverlay = false;
-
     @override
     void initState() {
         super.initState();
-        controller.addListener(() {
-            if (controller.offset >= 10) {
-                if (!showOverlay) {
-                    setState(() {
-                        showOverlay = true;
-                    });
-                }
-            } else {
-                if (showOverlay) {
-                    setState(() {
-                        showOverlay = false;
-                    });
-                }
-            }
-        });
+        controller.addListener(scrollListenSetting);
     }
 
     @override
     void dispose() {
+        controller.removeListener(scrollListenSetting);
         controller.dispose();
         super.dispose();
     }
+    void scrollListenSetting() {
+        if (controller.offset >= 10) {
+            if (!showOverlay) {
+                setState(() {
+                    showOverlay = true;
+                });
+            }
+        } else {
+            if (showOverlay) {
+                setState(() {
+                    showOverlay = false;
+                });
+            }
+        }
+    }
+
     DateTime today = DateTime.now();
     void onDaySelect(DateTime day, DateTime focus) {
         setState(() {
@@ -56,6 +58,15 @@ class homeStateWidget extends State<homeTab> {
                         height: double.infinity, width: double.infinity,
                         child: const Image(
                             image: AssetImage('assets/images/homebackground.png'), fit: BoxFit.cover,
+                        ),
+                    ),
+                    Align(
+                        alignment: Alignment.bottomCenter,
+                        child: FractionallySizedBox(
+                            heightFactor: 0.5,
+                            child: Container(
+                                color: Colors.white,
+                            ),
                         ),
                     ),
                     Container(
@@ -87,7 +98,7 @@ class homeStateWidget extends State<homeTab> {
                         },
                         child: SingleChildScrollView(
                             controller: controller,
-                            physics: const ClampingScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             child: Container(
                                 margin: const EdgeInsets.only(top: 100),
                                 child: Column(
@@ -97,7 +108,7 @@ class homeStateWidget extends State<homeTab> {
                                             width: double.infinity,
                                             padding: const EdgeInsets.only(bottom: 15),
                                             child: ListView(
-                                                physics: const ClampingScrollPhysics(),
+                                                physics: const BouncingScrollPhysics(),
                                                 scrollDirection: Axis.horizontal,
                                                 shrinkWrap: true,
                                                 children: [
@@ -251,71 +262,95 @@ class homeStateWidget extends State<homeTab> {
                                             ),
                                         ),
                                         Container(
-                                            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+                                            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 40),
                                             decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0),),
                                             ),
-                                            child: Container(
-                                                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                                                decoration: const BoxDecoration(
-                                                    color: Color(0xFFF8F9FD),
-                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
-                                                    boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
-                                                ),
-                                                child: Column(
-                                                    children: [
-                                                        Row(
+                                            child: Column(
+                                                children: [
+                                                    Container(
+                                                        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                                                        decoration: const BoxDecoration(
+                                                            color: Color(0xFFF8F9FD),
+                                                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                                            boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                                                        ),
+                                                        child: Column(
                                                             children: [
-                                                                Expanded(
-                                                                    child: TableCalendar(
-                                                                        focusedDay: today,
-                                                                        rowHeight: 40,
-                                                                        calendarFormat: CalendarFormat.week,
-                                                                        firstDay: DateTime.utc(2010, 10, 15),
-                                                                        lastDay: DateTime.utc(2050, 10, 15),
-                                                                        headerStyle: const HeaderStyle(
-                                                                            formatButtonVisible: false,
-                                                                            titleCentered: true,
-                                                                            titleTextStyle: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold',),
+                                                                Row(
+                                                                    children: [
+                                                                        Expanded(
+                                                                            child: TableCalendar(
+                                                                                focusedDay: today,
+                                                                                rowHeight: 40,
+                                                                                calendarFormat: CalendarFormat.week,
+                                                                                firstDay: DateTime.utc(2010, 10, 15),
+                                                                                lastDay: DateTime.utc(2050, 10, 15),
+                                                                                headerStyle: const HeaderStyle(
+                                                                                    formatButtonVisible: false,
+                                                                                    titleCentered: true,
+                                                                                    titleTextStyle: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold',),
+                                                                                ),
+                                                                                calendarStyle: const CalendarStyle(
+                                                                                    defaultTextStyle: TextStyle(fontSize: 18, fontFamily: 'SFPro',),
+                                                                                    todayTextStyle: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'SFProSemiBold',),
+                                                                                    weekendTextStyle: TextStyle(fontSize: 18, color: Colors.black, fontFamily: 'SFPro',),
+                                                                                    selectedTextStyle: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'SFProSemiBold',),
+                                                                                ),
+                                                                                daysOfWeekStyle: const DaysOfWeekStyle(
+                                                                                    weekdayStyle: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black,),
+                                                                                    weekendStyle: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black,),
+                                                                                ),
+                                                                                availableGestures: AvailableGestures.all,
+                                                                                onDaySelected: onDaySelect,
+                                                                                selectedDayPredicate: (day) => isSameDay(day, today),
+                                                                            ),
                                                                         ),
-                                                                        calendarStyle: const CalendarStyle(
-                                                                            defaultTextStyle: TextStyle(fontSize: 18, fontFamily: 'SFPro',),
-                                                                            todayTextStyle: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'SFProSemiBold',),
-                                                                            weekendTextStyle: TextStyle(fontSize: 18, color: Colors.black, fontFamily: 'SFPro',),
-                                                                            selectedTextStyle: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'SFProSemiBold',),
-                                                                        ),
-                                                                        daysOfWeekStyle: const DaysOfWeekStyle(
-                                                                            weekdayStyle: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black,),
-                                                                            weekendStyle: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black,),
-                                                                        ),
-                                                                        availableGestures: AvailableGestures.all,
-                                                                        onDaySelected: onDaySelect,
-                                                                        selectedDayPredicate: (day) => isSameDay(day, today),
-                                                                    ),
+                                                                    ],
                                                                 ),
+                                                                SizedBox(
+                                                                    height: 400,
+                                                                    child: ListView.separated(
+                                                                        physics: const NeverScrollableScrollPhysics(),
+                                                                        itemBuilder: (context, index) {
+                                                                            return Container(
+                                                                                height: 50,
+                                                                                decoration: const BoxDecoration(
+                                                                                    color: Colors.greenAccent,
+                                                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                                                                                ),
+                                                                                child: Center(child:
+                                                                                Text('Item thứ ${listData[index]}'),),
+                                                                            );
+                                                                        },
+                                                                        separatorBuilder: (context, index) => const SizedBox(height: 10,),
+                                                                        itemCount: 6
+                                                                    ),
+                                                                )
                                                             ],
                                                         ),
-                                                        SizedBox(
-                                                            height: 250,
-                                                            child: ListView.separated(
-                                                                itemBuilder: (context, index) {
-                                                                    return Container(
-                                                                        height: 50,
-                                                                        decoration: const BoxDecoration(
-                                                                            color: Colors.greenAccent,
-                                                                            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                                                                        ),
-                                                                        child: Center(child:
-                                                                            Text('Item thứ ${listData[index]}'),),
-                                                                    );
-                                                                },
-                                                                separatorBuilder: (context, index) => const SizedBox(height: 10,),
-                                                                itemCount: 4
-                                                            ),
-                                                        )
-                                                    ],
-                                                ),
+                                                    ),
+                                                    SizedBox(
+                                                        height: 300,
+                                                        child: ListView.separated(
+                                                            physics: const NeverScrollableScrollPhysics(),
+                                                            itemBuilder: (context, index) {
+                                                                return Container(
+                                                                    height: 50,
+                                                                    decoration: const BoxDecoration(
+                                                                        color: Colors.greenAccent,
+                                                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                                                                    ),
+                                                                    child: Center(child:
+                                                                    Text('Item thứ ${listData[index]}'),),
+                                                                );
+                                                            },
+                                                            separatorBuilder: (context, index) => const SizedBox(height: 10,),
+                                                            itemCount: 4
+                                                        ),
+                                                    )
+                                                ],
                                             )
                                         ),
                                     ],
