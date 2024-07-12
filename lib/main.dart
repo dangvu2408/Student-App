@@ -84,26 +84,40 @@ class myWidget extends StatefulWidget {
 
 class homeState extends State<myWidget> {
     int current = 0;
-    final tabsFrag = [
-        homeTab(),
-        courseTab(),
-        Container(
-            child: const Center(
-                child: Text('HOME3'),
-            ),
-        ),
-        Container(
-            child: const Center(
-                child: Text('HOME4'),
-            ),
-        ),
-    ];
+    PageController pageController = PageController();
+    void _onItemTapped(int index) {
+        setState(() {
+            current = index;
+        });
+        pageController.jumpToPage(index);
+    }
     @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: Stack(
                 children: [
-                    tabsFrag[current],
+                    PageView(
+                        controller: pageController,
+                        onPageChanged: (index) {
+                            setState(() {
+                                current = index;
+                            });
+                        },
+                        children: <Widget>[
+                            homeTab(onItemTapped: _onItemTapped),
+                            courseTab(),
+                            Container(
+                                child: const Center(
+                                    child: Text('HOME3'),
+                                ),
+                            ),
+                            Container(
+                                child: const Center(
+                                    child: Text('HOME4'),
+                                ),
+                            ),
+                        ],
+                    ),
                     Positioned(
                         bottom: 0,
                         left: 0,
@@ -159,10 +173,7 @@ class homeState extends State<myWidget> {
                                         ),
                                     ],
                                     currentIndex: current,
-                                    onTap: (index) {
-                                        setState(() {
-                                            current = index;
-                                        });},
+                                    onTap: _onItemTapped,
                                 )
                             )
                         ),

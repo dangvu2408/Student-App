@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import 'courseTab.dart';
+
 class homeTab extends StatefulWidget {
-    homeTab({Key? key}) : super(key: key);
+    homeTab({Key? key, required this.onItemTapped}) : super(key: key);
+    final Function(int) onItemTapped;
     @override
     State<homeTab> createState() => homeStateWidget();
 }
@@ -14,6 +17,7 @@ class homeTab extends StatefulWidget {
 class homeStateWidget extends State<homeTab> {
     ScrollController controller = ScrollController();
     bool showOverlay = false;
+
     @override
     void initState() {
         super.initState();
@@ -175,46 +179,51 @@ class homeStateWidget extends State<homeTab> {
                                                                 ),
                                                             ),
 
-                                                            Container(
-                                                                margin: const EdgeInsets.only(right: 12, left: 12),
-                                                                child: ClipRRect(
-                                                                    borderRadius: BorderRadius.circular(15),
-                                                                    child: BackdropFilter(
-                                                                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                                                                        child: Container(
-                                                                            padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
-                                                                            decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(15.0),
-                                                                                border: Border.all(
-                                                                                    width: 1.0,
-                                                                                    color: Color.fromARGB(255, 255, 44, 65).withOpacity(.6),
-                                                                                ),
-                                                                            ),
-                                                                            child: Row(
-                                                                                children: [
-                                                                                    Container(
-                                                                                        padding: const EdgeInsets.only(left: 20, right: 10),
-                                                                                        child: const Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                            children: [
-                                                                                                Text('Thông tin học tập', style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),),
-                                                                                                Row(
-                                                                                                    children: [
-                                                                                                        Column(
-                                                                                                            children: [
-                                                                                                                Text('GPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
-                                                                                                                Text('CPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
-                                                                                                            ],
-                                                                                                        ),
-                                                                                                        const Image(width: 45, height: 18, image: AssetImage('assets/images/invisibleeyeicon.png'),),
-                                                                                                    ],
-                                                                                                )
-                                                                                            ],
-                                                                                        )
+                                                            GestureDetector(
+                                                                onTap: () {
+                                                                    widget.onItemTapped(1);
+                                                                },
+                                                                child: Container(
+                                                                    margin: const EdgeInsets.only(right: 12, left: 12),
+                                                                    child: ClipRRect(
+                                                                        borderRadius: BorderRadius.circular(15),
+                                                                        child: BackdropFilter(
+                                                                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                                                            child: Container(
+                                                                                padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
+                                                                                decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(15.0),
+                                                                                    border: Border.all(
+                                                                                        width: 1.0,
+                                                                                        color: Color.fromARGB(255, 255, 44, 65).withOpacity(.6),
                                                                                     ),
-                                                                                    const Image(width: 10, height: 10, image: AssetImage('assets/images/forwardicon.png'),),
-                                                                                ],
-                                                                            )
+                                                                                ),
+                                                                                child: Row(
+                                                                                    children: [
+                                                                                        Container(
+                                                                                            padding: const EdgeInsets.only(left: 20, right: 10),
+                                                                                            child: const Column(
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                                children: [
+                                                                                                    Text('Thông tin học tập', style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),),
+                                                                                                    Row(
+                                                                                                        children: [
+                                                                                                            Column(
+                                                                                                                children: [
+                                                                                                                    Text('GPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
+                                                                                                                    Text('CPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
+                                                                                                                ],
+                                                                                                            ),
+                                                                                                            const Image(width: 45, height: 18, image: AssetImage('assets/images/invisibleeyeicon.png'),),
+                                                                                                        ],
+                                                                                                    )
+                                                                                                ],
+                                                                                            )
+                                                                                        ),
+                                                                                        const Image(width: 10, height: 10, image: AssetImage('assets/images/forwardicon.png'),),
+                                                                                    ],
+                                                                                )
+                                                                            ),
                                                                         ),
                                                                     ),
                                                                 ),
