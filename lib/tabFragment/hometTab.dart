@@ -317,7 +317,7 @@ class homeStateWidget extends State<homeTab> {
                                                                             return Container(
                                                                                 height: 50,
                                                                                 decoration: const BoxDecoration(
-                                                                                    color: Colors.greenAccent,
+                                                                                    color: Color(0xFFf3eded),
                                                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                                                                                 ),
                                                                                 child: Center(child:
@@ -339,7 +339,7 @@ class homeStateWidget extends State<homeTab> {
                                                                 return Container(
                                                                     height: 50,
                                                                     decoration: const BoxDecoration(
-                                                                        color: Colors.greenAccent,
+                                                                        color: Color(0xFFf3eded),
                                                                         borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                                                                     ),
                                                                     child: Center(child:

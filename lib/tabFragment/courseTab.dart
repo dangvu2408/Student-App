@@ -42,12 +42,18 @@ class courseStateWidget extends State<courseTab> {
                           controller: controller,
                           physics: const BouncingScrollPhysics(),
                             child: Container(
-                                margin: const EdgeInsets.only(top: 100, bottom: 40),
+                                margin: const EdgeInsets.only(top: 110, bottom: 40),
                                 padding: const EdgeInsets.only(left: 15, right: 15),
                                 child: Column(
                                     children: [
                                         Container(
                                             height: 250,
+                                            padding: const EdgeInsets.only(left: 10, right: 10),
+                                            margin: const EdgeInsets.only(bottom: 10),
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xFFfbf0f4),
+                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                            ),
                                             width: double.infinity,
                                             child: SfCartesianChart(
                                                 primaryXAxis: CategoryAxis(),
@@ -56,7 +62,7 @@ class courseStateWidget extends State<courseTab> {
                                                     textStyle: TextStyle(
                                                         color: Color(0xFFD80015),
                                                         fontFamily: 'SFProSemiBold',
-                                                        fontSize: 14,
+                                                        fontSize: 12,
                                                     ),
                                                     alignment: ChartAlignment.near,
                                                 ),
@@ -70,7 +76,6 @@ class courseStateWidget extends State<courseTab> {
                                                           SalesData('20221', 3.85),
                                                           SalesData('20222', 3.08),
                                                           SalesData('20231', 3.50),
-                                                          SalesData('20232', 3.42),
                                                         ],
                                                         xValueMapper: (SalesData sales, _) => sales.year,
                                                         yValueMapper: (SalesData sales, _) => sales.sales,
@@ -81,6 +86,11 @@ class courseStateWidget extends State<courseTab> {
                                         ),
                                         Container(
                                             height: 250,
+                                            padding: const EdgeInsets.only(left: 10, right: 10),
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xFFfbf0f4),
+                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                            ),
                                             width: double.infinity,
                                             child: SfCartesianChart(
                                                 primaryXAxis: CategoryAxis(),
@@ -89,7 +99,7 @@ class courseStateWidget extends State<courseTab> {
                                                     textStyle: TextStyle(
                                                           color: Color(0xFFD80015),
                                                           fontFamily: 'SFProSemiBold',
-                                                          fontSize: 14,
+                                                          fontSize: 12,
                                                     ),
                                                     alignment: ChartAlignment.near,
                                                 ),
@@ -103,7 +113,6 @@ class courseStateWidget extends State<courseTab> {
                                                             SalesData('20221', 3.85),
                                                             SalesData('20222', 3.46),
                                                             SalesData('20231', 3.48),
-                                                            SalesData('20232', 3.45),
                                                         ],
                                                         xValueMapper: (SalesData sales, _) => sales.year,
                                                         yValueMapper: (SalesData sales, _) => sales.sales,
@@ -120,7 +129,7 @@ class courseStateWidget extends State<courseTab> {
                                                     return Container(
                                                         height: 50,
                                                         decoration: const BoxDecoration(
-                                                            color: Colors.greenAccent,
+                                                            color: Color(0xFFf3eded),
                                                             borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                                                         ),
                                                         child: Center(child:
