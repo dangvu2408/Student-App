@@ -13,6 +13,89 @@ class loginActivity extends StatefulWidget {
 }
 
 class loginState extends State<loginActivity> {
+    int currentStep = 0;
+    continueStep() {
+        if (currentStep < 2) {
+            setState(() {
+                currentStep += 1;
+            });
+        }
+        else {
+            Navigator.push(context, PageTransition(
+                child: myWidget(title: 'HUST'),
+                type: PageTransitionType.fade,
+                duration: const Duration(milliseconds: 500),
+            ));
+        }
+    }
+    cancelStep() {
+        if (currentStep > 0) {
+            setState(() {
+                currentStep = currentStep - 1; //currentStep-=1;
+            });
+        }
+    }
+    onStepTapped(int value) {
+        setState(() {
+            currentStep = value;
+        });
+    }
+
+    Widget controlBuilders(context, details) {
+        return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+                children: [
+                    OutlinedButton(
+                        onPressed: details.onStepCancel,
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: const BorderSide(
+                                        color: Color(0xFFD80015),
+                                        width: 2.0,
+                                    ),
+                                ),
+                            ),
+                        ),
+                        child: const Text(
+                            'Quay lại',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'SFPro',
+                                color: Colors.black,
+                            ),
+                        )
+                    ),
+                    Spacer(),
+                    ElevatedButton(
+                        onPressed: details.onStepContinue,
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: const BorderSide(
+                                        color: Color(0xFFD80015),
+                                        width: 2.0,
+                                    ),
+                                ),
+                            ),
+                        ),
+                        child: const Text(
+                            'Tiếp tục',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'SFPro',
+                                color: Colors.black,
+                            ),
+                        )
+                    ),
+                ],
+            ),
+        );
+    }
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(
@@ -36,166 +119,43 @@ class loginState extends State<loginActivity> {
                             ),
                         ),
                     ),
-                    IntrinsicHeightScrollView(
-                        child: Column(
-                            children: [
-                                Spacer(),
-                                Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 35),
-                                    child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(15),
-                                        child: BackdropFilter(
-                                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                                            child: Container(
-                                                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(15.0),
-                                                    border: Border.all(
-                                                        width: 1.0,
-                                                        color: Color.fromARGB(255, 255, 44, 65).withOpacity(.6),
-                                                    ),
-                                                ),
-                                                child: Container(
-                                                    padding: const EdgeInsets.only(left: 15, right: 15),
-                                                    child: Column(
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: <Widget>[
-                                                            const Text(
-                                                                'ĐĂNG NHẬP',
-                                                                style: TextStyle(
-                                                                    fontSize: 24,
-                                                                    fontFamily: 'SFProBold',
-                                                                    color: Colors.white,
-                                                                    fontWeight: FontWeight.w900,
-                                                                ),
-                                                            ),
-                                                            Container(
-                                                                height: 40,
-                                                                margin: EdgeInsets.symmetric(vertical: 5),
-                                                                child: TextField(
-                                                                    decoration: InputDecoration(
-                                                                        filled: true,
-                                                                        fillColor: Colors.white,
-                                                                        border: OutlineInputBorder(
-                                                                            borderRadius: BorderRadius.circular(10),
-                                                                            borderSide: BorderSide.none,
-                                                                        ),
-                                                                        hintText: 'Mã số sinh viên',
-                                                                        hintStyle: const TextStyle(
-                                                                            fontSize: 16,
-                                                                            fontFamily: 'SFPro',
-                                                                        ),
-                                                                        contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                            Container(
-                                                                height: 40,
-                                                                margin: EdgeInsets.symmetric(vertical: 5),
-                                                                child: TextField(
-                                                                    obscureText: true,
-                                                                    decoration: InputDecoration(
-                                                                        filled: true,
-                                                                        fillColor: Colors.white,
-                                                                        border: OutlineInputBorder(
-                                                                            borderRadius: BorderRadius.circular(10),
-                                                                            borderSide: BorderSide.none,
-                                                                        ),
-                                                                        hintText: 'Mật khẩu',
-                                                                        hintStyle: const TextStyle(
-                                                                            fontSize: 16,
-                                                                            fontFamily: 'SFPro',
-                                                                        ),
-                                                                        contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                            Container(
-                                                                height: 40,
-                                                                margin: EdgeInsets.symmetric(vertical: 5),
-                                                                child: Row(
-                                                                    children: [
-                                                                        Expanded(
-                                                                            child: TextField(
-                                                                                keyboardType: TextInputType.number,
-                                                                                decoration: InputDecoration(
-                                                                                    filled: true,
-                                                                                    fillColor: Colors.white,
-                                                                                    border: OutlineInputBorder(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        borderSide: BorderSide.none,
-                                                                                    ),
-                                                                                    hintText: 'Mã Captcha',
-                                                                                    hintStyle: const TextStyle(
-                                                                                        fontSize: 16,
-                                                                                        fontFamily: 'SFPro',
-                                                                                    ),
-                                                                                    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
-                                                                                ),
-                                                                            ),
-                                                                        ),
-                                                                        const Image(
-                                                                            image: AssetImage('assets/images/captcha.png'),
-                                                                        ),
-                                                                        const Image(
-                                                                            height: 20,
-                                                                            width: 20,
-                                                                            image: AssetImage('assets/images/repeat.png'),
-                                                                        ),
-                                                                    ],
-                                                                )
-                                                            ),
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                    Navigator.push(context, PageTransition(
-                                                                        child: myWidget(title: 'HUST'),
-                                                                        type: PageTransitionType.fade,
-                                                                        duration: const Duration(milliseconds: 1000),
-                                                                    ));
-                                                                },
-                                                                style: ButtonStyle(
-                                                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                        RoundedRectangleBorder(
-                                                                            borderRadius: BorderRadius.circular(10),
-                                                                            side: const BorderSide(
-                                                                                color: Color(0xFFD80015),
-                                                                                width: 2.0,
-                                                                            ),
-                                                                        ),
-                                                                    ),
-                                                                ),
-                                                                child: const Text(
-                                                                    'ĐĂNG NHẬP',
-                                                                    style: TextStyle(
-                                                                        fontSize: 20,
-                                                                        fontFamily: 'SFProBold',
-                                                                        color: Colors.white,
-                                                                        fontWeight: FontWeight.w900,
-                                                                    ),
-                                                                )
-                                                            )
-                                                        ],
-                                                    )
-                                                ),
-                                            )
-                                        ),
-                                    ),
+                    Container(
+                        margin: const EdgeInsets.only(top: 100, left: 15, right: 15),
+                        decoration: const BoxDecoration(
+                            color: Color(0xFFF8F9FD),
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                            boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                        ),
+                        child: Stepper(
+                            elevation: 0,
+                            controlsBuilder: controlBuilders,
+                            type: StepperType.vertical,
+                            physics: const ScrollPhysics(),
+                            onStepTapped: onStepTapped,
+                            onStepContinue: continueStep,
+                            onStepCancel: cancelStep,
+                            currentStep: currentStep,
+                            connectorColor: MaterialStateProperty.all(Color(0xFFD80015)),
+                            steps: [
+                                Step(
+                                    title: const Text('Đăng nhập ctt-sis.hust.edu.vn'),
+                                    content: const Text('This is the 1 step.'),
+                                    isActive: currentStep >= 0,
+                                    state: currentStep >= 0 ? StepState.complete : StepState.disabled),
+                                Step(
+                                    title: const Text('Đăng nhập ctsv.hust.edu.vn'),
+                                    content: const Text('This is the 2 step.'),
+                                    isActive: currentStep >= 0,
+                                    state: currentStep >= 1 ? StepState.complete : StepState.disabled,
                                 ),
-                                Spacer(), Spacer(),
-                                Container(
-                                    padding: EdgeInsets.only(bottom: 30),
-                                    child: const Text(
-                                        'Bản Beta',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'SFPro',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w900,
-                                        ),
-                                    ),
-                                )
-                            ],
-                        )
+                                Step(
+                                    title: const Text('Hoàn tất'),
+                                    content: const Text('This is the 3 step.'),
+                                    isActive: currentStep >= 0,
+                                    state: currentStep >= 2 ? StepState.complete : StepState.disabled,
+                                ),
+                            ]
+                        ),
                     )
                 ],
             ),
