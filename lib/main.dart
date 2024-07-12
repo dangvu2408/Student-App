@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hust_sa/navigator/loginProperties.dart';
 import 'package:hust_sa/tabFragment/hometTab.dart';
+import 'package:hust_sa/tabFragment/courseTab.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 void main() {
@@ -85,11 +86,7 @@ class homeState extends State<myWidget> {
     int current = 0;
     final tabsFrag = [
         homeTab(),
-        Container(
-            child: const Center(
-                child: Text('HOME2'),
-            ),
-        ),
+        courseTab(),
         Container(
             child: const Center(
                 child: Text('HOME3'),
