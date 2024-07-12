@@ -160,16 +160,16 @@ class homeState extends State<myWidget> {
                                             label: 'Trang chủ',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/list.png')),
-                                            label: 'Học phần',
+                                            icon: ImageIcon(AssetImage('assets/images/server.png')),
+                                            label: 'Học tập',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/mail.png')),
-                                            label: 'Tin tức',
+                                            icon: ImageIcon(AssetImage('assets/images/drl.png')),
+                                            label: 'Rèn luyện',
                                         ),
                                         BottomNavigationBarItem(
-                                            icon: ImageIcon(AssetImage('assets/images/user.png')),
-                                            label: 'Cá nhân',
+                                            icon: ImageIcon(AssetImage('assets/images/grid.png')),
+                                            label: 'Tiện ích',
                                         ),
                                     ],
                                     currentIndex: current,
