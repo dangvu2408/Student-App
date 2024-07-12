@@ -139,7 +139,111 @@ class loginState extends State<loginActivity> {
                             steps: [
                                 Step(
                                     title: const Text('Đăng nhập ctt-sis.hust.edu.vn'),
-                                    content: const Text('This is the 1 step.'),
+                                    content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                            Container(
+                                                height: 40,
+                                                margin: EdgeInsets.symmetric(vertical: 5),
+                                                child: TextField(
+                                                    decoration: InputDecoration(
+                                                        filled: true,
+                                                        fillColor: Colors.white,
+                                                        focusedBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            borderSide: BorderSide(width: 2, color: Color(0xFFD80015)),
+                                                        ),
+                                                        enabledBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            borderSide: BorderSide(width: 1,color: Color(0xFFD80015)),
+                                                        ),
+                                                        hintText: 'Mã số sinh viên',
+                                                        hintStyle: const TextStyle(
+                                                            fontSize: 16,
+                                                            fontFamily: 'SFPro',
+                                                        ),
+                                                        contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
+                                                    ),
+                                                ),
+                                            ),
+                                            Container(
+                                                height: 40,
+                                                margin: EdgeInsets.symmetric(vertical: 5),
+                                                child: TextField(
+                                                    obscureText: true,
+                                                    decoration: InputDecoration(
+                                                        filled: true,
+                                                        fillColor: Colors.white,
+                                                        focusedBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            borderSide: BorderSide(width: 2, color: Color(0xFFD80015)),
+                                                        ),
+                                                        enabledBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            borderSide: BorderSide(width: 1,color: Color(0xFFD80015)),
+                                                        ),
+                                                        hintText: 'Mật khẩu',
+                                                        hintStyle: const TextStyle(
+                                                            fontSize: 16,
+                                                            fontFamily: 'SFPro',
+                                                        ),
+                                                        contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
+                                                    ),
+                                                ),
+                                            ),
+                                            Container(
+                                                height: 40,
+                                                margin: EdgeInsets.symmetric(vertical: 5),
+                                                child: Row(
+                                                    children: [
+                                                        Expanded(
+                                                            child: TextField(
+                                                                keyboardType: TextInputType.number,
+                                                                decoration: InputDecoration(
+                                                                    filled: true,
+                                                                    fillColor: Colors.white,
+                                                                    focusedBorder: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(10),
+                                                                        borderSide: BorderSide(width: 2, color: Color(0xFFD80015)),
+                                                                    ),
+                                                                    enabledBorder: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(10),
+                                                                        borderSide: BorderSide(width: 1,color: Color(0xFFD80015)),
+                                                                    ),
+                                                                    hintText: 'Mã Captcha',
+                                                                    hintStyle: const TextStyle(
+                                                                        fontSize: 16,
+                                                                        fontFamily: 'SFPro',
+                                                                    ),
+                                                                    contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10)
+                                                                ),
+                                                            ),
+                                                        ),
+                                                        Container(
+                                                            margin: const EdgeInsets.only(left: 15),
+                                                            padding: const EdgeInsets.only(right: 10),
+                                                            decoration: BoxDecoration(
+                                                                color: Color(0xFFD80015),
+                                                                borderRadius: BorderRadius.circular(10)
+                                                            ),
+                                                            child: const Row(
+                                                                children: [
+                                                                    Image(
+                                                                        image: AssetImage('assets/images/captcha.png'),
+                                                                    ),
+                                                                    Image(
+                                                                        height: 20,
+                                                                        width: 20,
+                                                                        image: AssetImage('assets/images/repeat.png'),
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                        )
+                                                    ],
+                                                )
+                                            ),
+                                        ],
+                                    ),
                                     isActive: currentStep >= 0,
                                     state: currentStep >= 0 ? StepState.complete : StepState.disabled),
                                 Step(
