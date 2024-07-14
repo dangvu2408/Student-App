@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_launcher_icons: "^0.13.1"
   page_transition: "^2.1.0"
   loading_indicator: "^3.1.1"
   table_calendar: "^3.1.0"
@@ -51,11 +50,11 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: "^3.0.0"
   flutter_launcher_icons: "^0.13.1"
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: "AppIcon"
+flutter_icons:
+  android: "launcher_hust_icon"
+  ios: true
   image_path: "assets/images/defaulthust.png"
+  min_sdk_android: 21
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
