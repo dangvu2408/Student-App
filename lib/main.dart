@@ -38,7 +38,7 @@ class splashScreenState extends State<splashScreen> {
             Navigator.push(context, PageTransition(
                 type: PageTransitionType.fade,
                 child: loginActivity(),
-                duration: const Duration(milliseconds: 2000),
+                duration: const Duration(milliseconds: 500),
             ));
         });
     }
