@@ -44,6 +44,7 @@ class courseStateWidget extends State<courseTab> {
                             child: Container(
                                 margin: const EdgeInsets.only(top: 110, bottom: 40),
                                 padding: const EdgeInsets.only(left: 15, right: 15),
+                                color: Color(0xFFF8F9FD),
                                 child: Column(
                                     children: [
                                         Container(

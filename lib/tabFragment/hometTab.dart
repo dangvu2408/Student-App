@@ -237,7 +237,7 @@ class homeStateWidget extends State<homeTab> {
                                         Container(
                                             padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 90),
                                             decoration: const BoxDecoration(
-                                                color: Colors.white,
+                                                color: Color(0xFFF8F9FD),
                                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0),),
                                             ),
                                             child: Column(
@@ -245,7 +245,7 @@ class homeStateWidget extends State<homeTab> {
                                                     Container(
                                                         padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                                                         decoration: const BoxDecoration(
-                                                            color: Color(0xFFF8F9FD),
+                                                            color: Color(0xFFFFFFFF),
                                                             borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
                                                             boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
                                                         ),
@@ -308,8 +308,9 @@ class homeStateWidget extends State<homeTab> {
                                                         height: 350,
                                                         child: GridView.count(
                                                             crossAxisCount: 2,
-                                                            crossAxisSpacing: 10,
-                                                            mainAxisSpacing: 10,
+                                                            crossAxisSpacing: 15,
+                                                            mainAxisSpacing: 15,
+                                                            physics: NeverScrollableScrollPhysics(),
                                                             children: [
                                                                 Container(
                                                                     child: Column(
@@ -318,7 +319,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                 padding: const EdgeInsets.all(10),
                                                                                 margin: const EdgeInsets.all(10),
                                                                                 decoration: const BoxDecoration(
-                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    color: Color(0xFFFFFFFF),
                                                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
                                                                                     boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
                                                                                 ),
@@ -336,7 +337,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                 padding: const EdgeInsets.all(10),
                                                                                 margin: const EdgeInsets.all(10),
                                                                                 decoration: const BoxDecoration(
-                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    color: Color(0xFFFFFFFF),
                                                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
                                                                                     boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
                                                                                 ),
@@ -354,7 +355,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                 padding: const EdgeInsets.all(10),
                                                                                 margin: const EdgeInsets.all(10),
                                                                                 decoration: const BoxDecoration(
-                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    color: Color(0xFFFFFFFF),
                                                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
                                                                                     boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
                                                                                 ),
@@ -372,7 +373,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                 padding: const EdgeInsets.all(10),
                                                                                 margin: const EdgeInsets.all(10),
                                                                                 decoration: const BoxDecoration(
-                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    color: Color(0xFFFFFFFF),
                                                                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
                                                                                     boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
                                                                                 ),
