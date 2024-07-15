@@ -108,7 +108,7 @@ class homeStateWidget extends State<homeTab> {
                                 child: Column(
                                     children: [
                                         Container(
-                                            height: 102,
+                                            height: 81,
                                             width: double.infinity,
                                             padding: const EdgeInsets.only(bottom: 15),
                                             child: ListView(
@@ -121,62 +121,41 @@ class homeStateWidget extends State<homeTab> {
                                                         children: [
                                                             Container(
                                                                 margin: const EdgeInsets.only(right: 12, left: 25),
-                                                                child: ClipRRect(
-                                                                    borderRadius: BorderRadius.circular(15),
-                                                                    child: BackdropFilter(
-                                                                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                                                                        child: Container(
-                                                                            padding: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
-                                                                            decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(15.0),
-                                                                                border: Border.all(
-                                                                                    width: 1.0,
-                                                                                    color: Color.fromARGB(255, 255, 44, 65).withOpacity(.6),
-                                                                                ),
-                                                                            ),
-                                                                            child: Row(
-                                                                                children: [
-                                                                                    Container(
-                                                                                        child: const CircleAvatar(
-                                                                                            radius: 45,
-                                                                                            backgroundColor: Color(0xFFD80015),
-                                                                                            child: Padding(
-                                                                                                padding: EdgeInsets.all(2), // Border radius
-                                                                                                child: ClipOval(
-                                                                                                    child:
-                                                                                                    Image(
-                                                                                                        image: AssetImage('assets/images/defaultavt.jpg'),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            ),
+                                                                child: Row(
+                                                                    children: [
+                                                                        Container(
+                                                                            child: const CircleAvatar(
+                                                                                radius: 45,
+                                                                                backgroundColor: Color(0xFFD80015),
+                                                                                child: Padding(
+                                                                                    padding: EdgeInsets.all(2), // Border radius
+                                                                                    child: ClipOval(
+                                                                                        child:
+                                                                                        Image(
+                                                                                            image: AssetImage('assets/images/defaultavt.jpg'),
                                                                                         ),
                                                                                     ),
-                                                                                    Container(
-                                                                                        padding: const EdgeInsets.only(right: 10),
-                                                                                        child: const Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                            children: [
-                                                                                                Text(
-                                                                                                    'Nguyễn Văn A',
-                                                                                                    style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                    '20220001',
-                                                                                                    style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),
-                                                                                                ),
-                                                                                            ],
-                                                                                        )
+                                                                                ),
+                                                                            ),
+                                                                        ),
+                                                                        Container(
+                                                                            padding: const EdgeInsets.only(right: 10, left: 10),
+                                                                            child: const Column(
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                children: [
+                                                                                    Text(
+                                                                                        'Nguyễn Văn A',
+                                                                                        style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),
                                                                                     ),
-                                                                                    const Image(
-                                                                                        width: 10,
-                                                                                        height: 10,
-                                                                                        image: AssetImage('assets/images/forwardicon.png'),
+                                                                                    Text(
+                                                                                        '20220001',
+                                                                                        style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),
                                                                                     ),
                                                                                 ],
                                                                             )
                                                                         ),
-                                                                    ),
-                                                                ),
+                                                                    ],
+                                                                )
                                                             ),
 
                                                             GestureDetector(
@@ -206,17 +185,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                                 children: [
                                                                                                     Text('Thông tin học tập', style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),),
-                                                                                                    Row(
-                                                                                                        children: [
-                                                                                                            Column(
-                                                                                                                children: [
-                                                                                                                    Text('GPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
-                                                                                                                    Text('CPA: 3.0', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
-                                                                                                                ],
-                                                                                                            ),
-                                                                                                            const Image(width: 45, height: 18, image: AssetImage('assets/images/invisibleeyeicon.png'),),
-                                                                                                        ],
-                                                                                                    )
+                                                                                                    Text('GPA: 3.50 / CPA: 3.48', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
                                                                                                 ],
                                                                                             )
                                                                                         ),
@@ -249,12 +218,7 @@ class homeStateWidget extends State<homeTab> {
                                                                                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                             children: [
                                                                                                 Text('Thông tin điểm rèn luyện', style: TextStyle(fontSize: 16, fontFamily: 'SFProSemiBold', color: Colors.white, fontWeight: FontWeight.bold,),),
-                                                                                                Row(
-                                                                                                    children: [
-                                                                                                        Text('Điểm rèn luyện: 70', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
-                                                                                                        const Image(width: 45, height: 18, image: AssetImage('assets/images/invisibleeyeicon.png'),),
-                                                                                                    ],
-                                                                                                )
+                                                                                                Text('Điểm rèn luyện: 70', style: TextStyle(fontSize: 15, fontFamily: 'SFPro', color: Colors.white,),),
                                                                                             ],
                                                                                         )
                                                                                     ),
@@ -271,7 +235,7 @@ class homeStateWidget extends State<homeTab> {
                                             ),
                                         ),
                                         Container(
-                                            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 40),
+                                            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 90),
                                             decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0),),
@@ -341,23 +305,86 @@ class homeStateWidget extends State<homeTab> {
                                                         ),
                                                     ),
                                                     SizedBox(
-                                                        height: 300,
-                                                        child: ListView.separated(
-                                                            physics: const NeverScrollableScrollPhysics(),
-                                                            itemBuilder: (context, index) {
-                                                                return Container(
-                                                                    height: 50,
-                                                                    decoration: const BoxDecoration(
-                                                                        color: Color(0xFFf3eded),
-                                                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                                                                    ),
-                                                                    child: Center(child:
-                                                                    Text('Item thứ ${listData[index]}'),),
-                                                                );
-                                                            },
-                                                            separatorBuilder: (context, index) => const SizedBox(height: 10,),
-                                                            itemCount: 4
-                                                        ),
+                                                        height: 350,
+                                                        child: GridView.count(
+                                                            crossAxisCount: 2,
+                                                            crossAxisSpacing: 10,
+                                                            mainAxisSpacing: 10,
+                                                            children: [
+                                                                Container(
+                                                                    child: Column(
+                                                                        children: [
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(10),
+                                                                                margin: const EdgeInsets.all(10),
+                                                                                decoration: const BoxDecoration(
+                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                                                                    boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                                                                                ),
+                                                                                child: const Image(width: 45, height: 45, image: AssetImage('assets/images/calendar1.png'),),
+                                                                            ),
+                                                                            Text('Thời khóa biểu', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold', color: Colors.black, fontWeight: FontWeight.bold,),),
+                                                                            Text('Tra cứu thời khóa biểu, lịch thi', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black, ),),
+                                                                        ],
+                                                                    )
+                                                                ),
+                                                                Container(
+                                                                    child: Column(
+                                                                        children: [
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(10),
+                                                                                margin: const EdgeInsets.all(10),
+                                                                                decoration: const BoxDecoration(
+                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                                                                    boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                                                                                ),
+                                                                                child: const Image(width: 45, height: 45, image: AssetImage('assets/images/settingcalendar.png'),),
+                                                                            ),
+                                                                            Text('Sắp xếp TKB', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold', color: Colors.black, fontWeight: FontWeight.bold,),),
+                                                                            Text('Sắp xếp, chỉnh sửa thời khóa biểu', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black, ),),
+                                                                        ],
+                                                                    )
+                                                                ),
+                                                                Container(
+                                                                    child: Column(
+                                                                        children: [
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(10),
+                                                                                margin: const EdgeInsets.all(10),
+                                                                                decoration: const BoxDecoration(
+                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                                                                    boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                                                                                ),
+                                                                                child: const Image(width: 45, height: 45, image: AssetImage('assets/images/listcourse1.png'),),
+                                                                            ),
+                                                                            Text('Danh mục học phần', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold', color: Colors.black, fontWeight: FontWeight.bold,),),
+                                                                            Text('Tra cứu học phần trong chương trình đào tạo', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black, ),),
+                                                                        ],
+                                                                    )
+                                                                ),
+                                                                Container(
+                                                                    child: Column(
+                                                                        children: [
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(10),
+                                                                                margin: const EdgeInsets.all(10),
+                                                                                decoration: const BoxDecoration(
+                                                                                    color: Color(0xFFF8F9FD),
+                                                                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0), bottomRight: Radius.circular(20.0),),
+                                                                                    boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 5.0,),],
+                                                                                ),
+                                                                                child: const Image(width: 45, height: 45, image: AssetImage('assets/images/dollar1.png'),),
+                                                                            ),
+                                                                            Text('Học phí - Công nợ', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'SFProSemiBold', color: Colors.black, fontWeight: FontWeight.bold,),),
+                                                                            Text('Tra cứu thông tin về học phí, công nợ', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'SFPro', color: Colors.black, ),),
+                                                                        ],
+                                                                    )
+                                                                ),
+                                                            ],
+                                                        )
                                                     )
                                                 ],
                                             )
