@@ -69,7 +69,7 @@ class homeStateWidget extends State<homeTab> {
                         child: FractionallySizedBox(
                             heightFactor: 0.5,
                             child: Container(
-                                color: Colors.white,
+                                color: Color(0xFFF8F9FD),
                             ),
                         ),
                     ),
