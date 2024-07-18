@@ -54,6 +54,9 @@ class homeStateWidget extends State<homeTab> {
     }
     @override
     Widget build(BuildContext context) {
+        var size = MediaQuery.of(context).size;
+        final double itemHeight = size.height;
+        final double itemWidth = size.width;
         List<int> listData = List.generate(100, (index) => index + 1);
         return Scaffold(
             body: Stack(
@@ -304,8 +307,8 @@ class homeStateWidget extends State<homeTab> {
                                                             ],
                                                         ),
                                                     ),
-                                                    SizedBox(
-                                                        height: 350,
+                                                    Container(
+                                                        height: itemWidth,
                                                         child: GridView.count(
                                                             crossAxisCount: 2,
                                                             crossAxisSpacing: 15,
