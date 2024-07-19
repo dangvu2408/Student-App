@@ -6,6 +6,8 @@ import 'package:hust_sa/tabFragment/hometTab.dart';
 import 'package:hust_sa/tabFragment/courseTab.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+
+import 'data/accessToHost.dart';
 void main() {
     runApp(myApp());
 }
@@ -31,13 +33,14 @@ class splashScreen extends StatefulWidget {
 }
 
 class splashScreenState extends State<splashScreen> {
+    final accessToHost access_ToHost = accessToHost();
     @override
     void initState() {
         super.initState();
         Timer(const Duration(milliseconds: 2000), () {
             Navigator.push(context, PageTransition(
                 type: PageTransitionType.fade,
-                child: loginActivity(),
+                child: loginActivity(access_ToHost),
                 duration: const Duration(milliseconds: 500),
             ));
         });

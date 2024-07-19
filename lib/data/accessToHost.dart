@@ -56,7 +56,7 @@ class accessToHost {
                 _showToast('Lỗi tải captcha');
             }
         } catch (e) {
-            _showToast('Error: $e');
+            _showToast('Lỗi: $e');
         }
     }
 
@@ -66,7 +66,10 @@ class accessToHost {
         return digest.toString();
     }
 
-    Future<void> login(Function setState) async {
+    Future<void> login(Function setState, BuildContext context) async {
+        print('Username: ${usernameController.text}');
+        print('Password: ${passwordController.text}');
+        print('Captcha: ${captchaController.text}');
         if (usernameController.text.isEmpty ||
                 passwordController.text.isEmpty ||
                 captchaController.text.isEmpty) {
@@ -92,8 +95,8 @@ class accessToHost {
             _saveUser();
             _showToast('Đăng nhập thành công!');
             Navigator.pushReplacement(
-                loginActivity() as BuildContext,
-                MaterialPageRoute(builder: (loginActivity) => myWidget(title: 'HUST')),
+                context,
+                MaterialPageRoute(builder: (context) => myWidget(title: 'HUST')),
             );
         } else {
             _showToast('Đăng nhập thất bại!');
@@ -107,8 +110,11 @@ class accessToHost {
                 Uri.parse('https://ctt-sis.hust.edu.vn/Account/Login.aspx'),
                 body: loginData,
             );
+            print('Response status: ${response.statusCode}');
+            print('Response body: ${response.body}');
             return response.statusCode == 200;
         } catch (e) {
+            print('Lỗi: $e');
             return false;
         }
     }

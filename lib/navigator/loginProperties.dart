@@ -15,12 +15,16 @@ import 'package:html/parser.dart' as htmlParser;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hust_sa/data/accessToHost.dart';
 class loginActivity extends StatefulWidget {
+
+    final accessToHost ath;
+    loginActivity(this.ath);
     @override
     loginState createState() => loginState();
 }
 
 class loginState extends State<loginActivity> {
     int currentStep = 0;
+    accessToHost host = accessToHost();
     // TextEditingController usernameController = TextEditingController();
     // TextEditingController passwordController = TextEditingController();
     // TextEditingController captchaController = TextEditingController();
@@ -31,7 +35,7 @@ class loginState extends State<loginActivity> {
     // Map<String, String> cookies = {};
     void initState() {
         super.initState();
-        accessToHost().loadCaptcha(setState);
+        widget.ath.loadCaptcha(setState);
     }
 
     continueStep() {
@@ -41,7 +45,7 @@ class loginState extends State<loginActivity> {
             });
         }
         else {
-            accessToHost().login(setState);
+            widget.ath.login(setState, context);
         }
     }
     cancelStep() {
@@ -258,7 +262,7 @@ class loginState extends State<loginActivity> {
                                                 height: 40,
                                                 margin: EdgeInsets.symmetric(vertical: 5),
                                                 child: TextField(
-                                                    controller: accessToHost().usernameController,
+                                                    controller: widget.ath.usernameController,
                                                     decoration: InputDecoration(
                                                         filled: true,
                                                         fillColor: Colors.white,
@@ -283,7 +287,7 @@ class loginState extends State<loginActivity> {
                                                 height: 40,
                                                 margin: EdgeInsets.symmetric(vertical: 5),
                                                 child: TextField(
-                                                    controller: accessToHost().passwordController,
+                                                    controller: widget.ath.passwordController,
                                                     obscureText: true,
                                                     decoration: InputDecoration(
                                                         filled: true,
@@ -312,7 +316,7 @@ class loginState extends State<loginActivity> {
                                                     children: [
                                                         Expanded(
                                                             child: TextField(
-                                                                controller: accessToHost().captchaController,
+                                                                controller: widget.ath.captchaController,
                                                                 keyboardType: TextInputType.number,
                                                                 decoration: InputDecoration(
                                                                     filled: true,
@@ -345,13 +349,13 @@ class loginState extends State<loginActivity> {
                                                             ),
                                                             child: Stack(
                                                                 children: [
-                                                                    if (accessToHost().captchaImageUrl != null)
-                                                                        Image.network(accessToHost().captchaImageUrl!),
+                                                                    if (widget.ath.captchaImageUrl != null)
+                                                                        Image.network(widget.ath.captchaImageUrl!),
                                                                     Align(
                                                                         alignment: Alignment.centerRight,
                                                                         child: GestureDetector(
                                                                             onTap: () {
-                                                                                accessToHost().loadCaptcha(setState);
+                                                                                widget.ath.loadCaptcha(setState);
                                                                             },
                                                                             child: const Image(
                                                                                 height: 20,
