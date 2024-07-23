@@ -28,6 +28,7 @@ class courseStateWidget extends State<courseTab> {
 
   @override
   Widget build(BuildContext context) {
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     List<int> listData = List.generate(100, (index) => index + 1);
     return Scaffold(
         body: Stack(children: [
@@ -161,8 +162,7 @@ class courseStateWidget extends State<courseTab> {
                     ],
                   )))),
       Container(
-        padding:
-            const EdgeInsets.only(top: 40, right: 25, bottom: 15, left: 25),
+        padding: EdgeInsets.only(top: statusBarHeight + 15, right: 25, bottom: 15, left: 25),
         color: Color(0xFFD80015),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

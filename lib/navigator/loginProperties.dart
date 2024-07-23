@@ -167,6 +167,7 @@ class loginState extends State<loginActivity> {
 
   @override
   Widget build(BuildContext context) {
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -180,8 +181,7 @@ class loginState extends State<loginActivity> {
             ),
           ),
           Container(
-            margin:
-                const EdgeInsets.only(top: 40, right: 25, bottom: 15, left: 25),
+            margin: EdgeInsets.only(top: statusBarHeight + 15, right: 25, bottom: 15, left: 25),
             child: Container(
               height: 40,
               child: const Image(
@@ -369,7 +369,13 @@ class loginState extends State<loginActivity> {
                   ),
                   Step(
                     title: const Text('Hoàn tất'),
-                    content: const Text('Xác nhận thông tin đăng nhập.'),
+                    content: const Text('Xác nhận thông tin đăng nhập.',
+                      style : TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'SFProSemiBold',
+                        color: Colors.black,
+                      ),
+                    ),
                     isActive: currentStep >= 0,
                     state: currentStep >= 2
                         ? StepState.complete

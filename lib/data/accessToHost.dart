@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as htmlParser;
 import 'package:crypto/crypto.dart';
 import 'package:hust_sa/data/requestData.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:hust_sa/navigator/loginProperties.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -100,7 +101,11 @@ class accessToHost {
         if (usernameController.text.isEmpty ||
                 passwordController.text.isEmpty ||
                 captchaController.text.isEmpty) {
-            Fluttertoast.showToast(msg: 'Vui lòng điền vào trường còn thiếu');
+            MotionToast(
+                icon: Icons.error,
+                primaryColor: Colors.red,
+                description: Text('Vui lòng điền vào trường còn thiếu'),
+            ).show(context);
             return;
         }
 

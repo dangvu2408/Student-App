@@ -57,6 +57,7 @@ class homeStateWidget extends State<homeTab> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double itemHeight = size.height;
     final double itemWidth = size.width;
     List<int> listData = List.generate(100, (index) => index + 1);
@@ -82,7 +83,7 @@ class homeStateWidget extends State<homeTab> {
           ),
           Container(
             margin:
-                const EdgeInsets.only(top: 40, right: 25, bottom: 15, left: 25),
+            EdgeInsets.only(top: statusBarHeight + 15, right: 25, bottom: 15, left: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -706,8 +707,7 @@ class homeStateWidget extends State<homeTab> {
               opacity: showOverlay ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 300),
               child: Container(
-                padding: const EdgeInsets.only(
-                    top: 40, right: 25, bottom: 15, left: 25),
+                padding: EdgeInsets.only(top: statusBarHeight + 15, right: 25, bottom: 15, left: 25),
                 color: Color(0xFFD80015),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
