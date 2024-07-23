@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' show parse;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hust_sa/data/sharedPreferences.dart';
 
 class jsonData {
     Future<void> getTimeTable() async {
@@ -29,7 +30,6 @@ class jsonData {
         try {
             final jsonArray = [];
             final elements = document.getElementById('ctl00_ctl00_contentPane_MainPanel_MainContent_gvStudentRegister_DXMainTable')?.getElementsByClassName('dxgvDataRow_Mulberry');
-
             if (elements != null) {
                 for (var element in elements) {
                     final str01 = element.querySelector('td.dxgv')?.text ?? '';
@@ -63,10 +63,7 @@ class jsonData {
                     };
                     jsonArray.add(jsonObject);
                 }
-
-              // Lưu dữ liệu vào SharedPreferences
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setString('key_share_preferences_data_tkb', jsonEncode(jsonArray));
+                setTKB(jsonEncode(jsonArray));
             }
         } catch (e) {
             print('Lỗi khi phân tích thời khóa biểu: $e');

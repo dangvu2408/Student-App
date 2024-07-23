@@ -25,26 +25,76 @@ class loginActivity extends StatefulWidget {
 class loginState extends State<loginActivity> {
   int currentStep = 0;
   accessToHost host = accessToHost();
-  // TextEditingController usernameController = TextEditingController();
-  // TextEditingController passwordController = TextEditingController();
-  // TextEditingController captchaController = TextEditingController();
-  // Uint8List? captchaImage;
-  // String? captchaImageUrl;
-  // String? viewState;
-  // String? eventValidation;
-  // Map<String, String> cookies = {};
+
   void initState() {
     super.initState();
     widget.ath.loadCaptcha(setState);
   }
-
+  void confirmationDialog(BuildContext context) async {
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // title: TextStyleExample(name : 'Privacy',style : textTheme.titleMedium!.copyWith(color: MyColors.black, fontWeight: FontWeight.bold)),
+          title: const Text(
+              'Xác nhận đăng nhập',
+              style : TextStyle(
+                fontSize: 20,
+                fontFamily: 'SFProSemiBold',
+              )
+          ),
+          content: const Text(
+              "Khi bạn ấn nút \"TIẾP TỤC\", ứng dụng sẽ đăng nhập vào trang web ctt-sis.hust.edu.vn và ctsv.hust.edu.vn để lấy thông tin. Ứng dụng sẽ không lấy thêm thông tin nào khác. Tiếp tục đăng nhập?",
+              style : TextStyle(
+                fontSize: 16,
+                fontFamily: 'SFProSemiBold',
+              )
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                  'THOÁT',
+                  style : TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'SFProSemiBold',
+                    color: Colors.black,
+                  )
+              ),
+              //child: TextStyleExample(name : 'DISAGREE',style : textTheme.labelLarge!),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              // child: TextStyleExample(name : 'AGREE',style : textTheme.labelLarge!.copyWith(color: MyColors.accentDark)),
+              child: const Text(
+                  'TIẾP TỤC',
+                  style : TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'SFProSemiBold',
+                    color: Colors.black,
+                  )
+              ),
+              onPressed: () {
+                widget.ath.login(setState, context);
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
   continueStep() {
     if (currentStep < 2) {
       setState(() {
         currentStep += 1;
       });
     } else {
-      widget.ath.login(setState, context);
+      confirmationDialog(context);
     }
   }
 
@@ -114,102 +164,6 @@ class loginState extends State<loginActivity> {
       ),
     );
   }
-
-  // void _showToast(String message) {
-  //     Fluttertoast.showToast(
-  //         msg: message,
-  //         toastLength: Toast.LENGTH_LONG,
-  //         gravity: ToastGravity.BOTTOM,
-  //     );
-  // }
-  //
-  // Future<void> loadCaptcha() async {
-  //     try {
-  //         final response = await http.get(Uri.parse('https://ctt-sis.hust.edu.vn/Account/Login.aspx'));
-  //         if (response.statusCode == 200) {
-  //             final document = htmlParser.parse(response.body);
-  //             final captchaElement = document.getElementById('ctl00_ctl00_contentPane_MainPanel_MainContent_ASPxCaptcha1_IMG');
-  //             if (captchaElement != null) {
-  //                 final srcValue = captchaElement.attributes['src'];
-  //                 if (srcValue != null) {
-  //                     setState(() {
-  //                         captchaImageUrl = 'https://ctt-sis.hust.edu.vn' + srcValue;
-  //                         viewState = document.getElementById('__VIEWSTATE')?.attributes['value'];
-  //                         eventValidation = document.getElementById('__EVENTVALIDATION')?.attributes['value'];
-  //                     });
-  //                 } else {
-  //                     _showToast('Lỗi: src của phần tử captcha là null');
-  //                 }
-  //             } else {
-  //                 _showToast('Không tìm thấy phần tử captcha');
-  //             }
-  //         } else {
-  //             _showToast('Lỗi tải captcha');
-  //         }
-  //     } catch (e) {
-  //         _showToast('Error: $e');
-  //     }
-  // }
-  //
-  // String _md5(String input) {
-  //     var bytes = utf8.encode(input);
-  //     var digest = md5.convert(bytes);
-  //     return digest.toString();
-  // }
-  //
-  // Future<void> login() async {
-  //     if (usernameController.text.isEmpty ||
-  //         passwordController.text.isEmpty ||
-  //         captchaController.text.isEmpty) {
-  //         Fluttertoast.showToast(msg: 'Vui lòng điền vào trường còn thiếu');
-  //         return;
-  //     }
-  //
-  //     final username = usernameController.text;
-  //     final password = passwordController.text;
-  //     final captcha = captchaController.text;
-  //     final md5Hash = _md5('$username.$password');
-  //     final loginData = {
-  //         'ma_hoa': md5Hash,
-  //         'username': username,
-  //         'password': password,
-  //         'captcha': captcha,
-  //     };
-  //
-  //     final success = await _performLogin(loginData);
-  //
-  //     Navigator.of(context).pop();
-  //
-  //     if (success) {
-  //         _saveUser();
-  //         _showToast('Đăng nhập thành công!');
-  //         Navigator.pushReplacement(
-  //             context,
-  //             MaterialPageRoute(builder: (context) => myWidget(title: 'HUST')),
-  //         );
-  //     } else {
-  //         _showToast('Đăng nhập thất bại!');
-  //         await loadCaptcha();
-  //     }
-  // }
-  //
-  // Future<bool> _performLogin(Map<String, String> loginData) async {
-  //     try {
-  //         final response = await http.post(
-  //             Uri.parse('https://ctt-sis.hust.edu.vn/Account/Login.aspx'),
-  //             body: loginData,
-  //         );
-  //         return response.statusCode == 200;
-  //     } catch (e) {
-  //         return false;
-  //     }
-  // }
-  //
-  // Future<void> _saveUser() async {
-  //     final prefs = await SharedPreferences.getInstance();
-  //     await prefs.setString('username', usernameController.text);
-  //     await prefs.setString('password', passwordController.text);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -401,7 +355,13 @@ class loginState extends State<loginActivity> {
                           : StepState.disabled),
                   Step(
                     title: const Text('Đăng nhập ctsv.hust.edu.vn'),
-                    content: const Text('This is the 2 step.'),
+                    content: const Text(
+                        'This is the 2 step.',
+                        style : TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'SFProSemiBold',
+                          color: Colors.black,
+                    )),
                     isActive: currentStep >= 0,
                     state: currentStep >= 1
                         ? StepState.complete
@@ -409,7 +369,7 @@ class loginState extends State<loginActivity> {
                   ),
                   Step(
                     title: const Text('Hoàn tất'),
-                    content: const Text('This is the 3 step.'),
+                    content: const Text('Xác nhận thông tin đăng nhập.'),
                     isActive: currentStep >= 0,
                     state: currentStep >= 2
                         ? StepState.complete

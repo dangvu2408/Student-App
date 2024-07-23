@@ -37,6 +37,8 @@ class accessToHost {
         );
     }
 
+
+
     Future<void> loadCaptcha(Function setState) async {
         try {
             final response = await http.get(Uri.parse('https://ctt-sis.hust.edu.vn/Account/Login.aspx'));
@@ -70,12 +72,6 @@ class accessToHost {
                         } else {
                             _showToast('Lỗi: Không tìm thấy phần tử viewState hoặc eventValidation');
                         }
-
-                        // setState(() async {
-                        //     captchaImageUrl = 'https://ctt-sis.hust.edu.vn' + srcValue;
-                        //     viewState = document.getElementById('__VIEWSTATE')?.attributes['value'];
-                        //     eventValidation = document.getElementById('__EVENTVALIDATION')?.attributes['value'];
-                        // });
                     } else {
                         _showToast('Lỗi: src của phần tử captcha là null');
                     }
